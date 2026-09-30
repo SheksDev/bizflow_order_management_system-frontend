@@ -47,10 +47,10 @@ function DashboardTable<T extends object>({
 
     return (
         <div
-            className="w-full">
+            className="w-full bf-shadow rounded-lg">
 
             <div
-                className="w-full flex items-center justify-between p-4 bg-[#FFFFFF] rounded-t-lg rounded-">
+                className="w-full flex items-center justify-between p-4 bg-[#FFFFFF] rounded-t-lg">
 
                 <div
                     className="flex items-center gap-1">

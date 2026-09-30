@@ -73,6 +73,7 @@ export interface OrderData {
     totalPaid?: string; 
     totalRefunded?: string;
     outstanding?: string;
+    totalTips?: string;
 
     customer: CustomerData;
     items: OrderItem[];
@@ -80,18 +81,49 @@ export interface OrderData {
     expenses: ExpenseData[];
 }
 
-export interface OrderResponse {
-    success: boolean,
-    message: string,
-    data: {
-        orders: [
-            OrderData,
-        ]
-    }
-    pagination: {
-        page: number;
-        limit: number;
+export interface OrdersSummary {
+    totalOrder: number;
+    totalOrderValue: {
         total: number;
-        totalPages: number;
+        amount: string;
+        pendingOrders: number;
+        readyOrders: number;
+        deliveredOrders: number;
+        cancelledOrders: number;
+    },
+    totalPayments: {
+        amount: string;
+        rate: string;
+    },
+    totalTips: string;
+    totalOutstanding: {
+        amount: string;
+        volume: number;
+    },
+    totalOrderRefunded: string;
+}
+
+export interface OrdersResponse {
+    success: boolean;
+    message: string;
+    data: {
+        orders: OrderData[];
+
+        summary: OrdersSummary;
+
+        pagination: {
+            page: number;
+            limit: number;
+            total: number;
+            totalPages: number;
+        };
+    }
+}
+
+export interface OrderResponse {
+    success: boolean;
+    message: string;
+    data: {
+        order: OrderData;
     }
 }

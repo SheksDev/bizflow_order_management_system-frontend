@@ -62,14 +62,14 @@ function SideBar() {
                                                 <img 
                                                     src={item.iconPath} 
                                                     alt="" 
-                                                    className={`w-3.75 h-3.75}`}
+                                                    // className={`w-3.75 h-3.75}`}
                                                 />
                                             )
                                             : (
                                                 <img 
                                                     src={item.iconActivePath} 
                                                     alt="" 
-                                                    className={`w-3.75 h-3.75}`}
+                                                    // className={`w-3.75 h-3.75}`}
                                                 />
                                             )
                                     }

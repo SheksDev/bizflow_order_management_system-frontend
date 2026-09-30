@@ -26,7 +26,7 @@ function DashboardStats(
 
                                 <div
                                     key={stat.type}
-                                    className="flex-1 min-w-36 p-4 rounded-lg bg-[#FFFFFF] shadow-[0_1px_2px_rgba(0,0,0,0.05)] flex flex-col justify-between items-start">
+                                    className="flex-1 min-w-36 p-4 rounded-lg bg-[#FFFFFF] bf-shadow flex flex-col justify-between items-start">
 
                                     <div
                                         className="w-full flex flex-col gap-0.5">
@@ -35,7 +35,7 @@ function DashboardStats(
                                             className="flex items-center justify-between">
 
                                             <h3
-                                                className={`font-semibold text-[11px]/[14px] tracking-[0.55px] text-bf-primarytext`}>
+                                                className={`font-semibold text-[10px]/[14px] tracking-[0.55px] text-bf-primarytext`}>
                                                 {stat.title}
                                             </h3>
 
@@ -48,7 +48,7 @@ function DashboardStats(
                                         </div>
 
                                         <h2
-                                            className={`pt-1.5 font-bold text-[18px]/[40px] tracking-[-0.8px] ${stat.color === "green"
+                                            className={`pt-1.5 font-bold text-[18px]/[40px] tracking-[-0.8px] ${stat.color === "green" || stat.type === "payment"
                                                             ? "text-bf-success"
                                                             : stat.color === "red"
                                                             ? "text-bf-error"
@@ -117,9 +117,9 @@ function DashboardStats(
                                                             <p
                                                                 className={`${
                                                                             stat.type === "gross"
-                                                                                ? "text-bf-success"
+                                                                                ? stat.color
                                                                                 : stat.type === "payment"
-                                                                                ? "text-bf-primaryblack bg-bf-live px-2 py-0.5 rounded-xl"
+                                                                                ? stat.color
                                                                                 : stat.type === "balance"
                                                                                 ? "text-bf-primarytext bg-[#FFDBCA] px-2 py-0.5 rounded-xl"
                                                                                 : stat.type === "outflow"

@@ -9,6 +9,18 @@ export interface PaymentsQuery {
     month?: string;
 }
 
+export interface RefundData {
+    id: string;
+    refundNumber: string;
+    paymentId: string;
+    amount: string | number;
+    refundMethod: "CASH";
+    reason: string;
+    refundDate: string;
+    reference: string;
+    createdAt: string;
+}
+
 
 export interface PaymentData {
     id: string;
@@ -31,9 +43,7 @@ export interface PaymentData {
             "PARTIALLY_REFUNDED" |
             "REFUNDED";
     tipAmount: string;
-    refunds: [
-        
-    ];
+    refunds: RefundData[];
 }
 
 

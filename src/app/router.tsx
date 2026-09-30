@@ -5,7 +5,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import AppLayout from "../components/layout/AppLayout";
 import Dashboard from "../pages/Dashboard";
 import Customers from "../pages/Customers";
-import CustomerDetailView from "../components/customers/CustomerDetailView";
+import CustomerDetailView from "../components/customers/customer_details/CustomerDetailView";
+import Orders from "../pages/Orders";
+import OrderDetailView from "../components/orders/order_details/OrderDetailView";
 // import AddCustomerModal from "../components/customers/AddCustomerModal";
 
 
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
                         path: "customers/:customerId",
                         element: <CustomerDetailView />
                     },
+                    {
+                        path: "orders",
+                        element: <Orders />,
+                    },
+                    {
+                        path: "orders/:orderNumber",
+                        element: <OrderDetailView />
+                    }
                 ]
             }
         ]

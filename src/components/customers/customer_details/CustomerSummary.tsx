@@ -1,5 +1,6 @@
-import type { CustomerData } from "../../api/customers/types/customers";
-import { CUSTOMER_STATS } from "./customer.types"
+import type { CustomerData } from "../../../api/customers/types/customers";
+import { CUSTOMER_STATS } from "../customer.types";
+
 
 interface SummaryProps {
     customer: CustomerData | null;

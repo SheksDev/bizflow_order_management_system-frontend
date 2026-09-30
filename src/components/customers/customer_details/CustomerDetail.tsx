@@ -1,6 +1,7 @@
-import type { CustomerData } from "../../api/customers/types/customers"
-import { formatDateTime } from "../../utils/formatDateTime";
-import { getInitials } from "../../utils/getIntitals"
+import type { CustomerData } from "../../../api/customers/types/customers";
+import { formatDateTime } from "../../../utils/formatDateTime";
+import { getInitials } from "../../../utils/getIntitals";
+
 
 interface DetailProps {
     customer: CustomerData | null;

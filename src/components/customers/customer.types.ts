@@ -31,7 +31,7 @@ export const CUSTOMERS_STATS = (summary: CustomerSummary) => [
     },
     {
         type: "balance",
-        title: "TOTAL RECEIVABLES OUTSTANDING",
+        title: "TOTAL OUTSTANDING",
         volume: `${formatCurrency(Number(summary.totalOutstanding))}`,
         stats: `${0} account pending`
     },
@@ -81,17 +81,6 @@ export const CUSTOMER_STATS = (summary: Summary) => [
         stats: ["Action Due"]
     },
 ]
-
-
-export interface TableRow {
-    [key: string]: string | number;
-}
-
-export interface TableColumn<T extends object> {
-    key: keyof T;
-    label: string;
-    render?: (row: T) => React.ReactNode;
-}
 
 
 export interface CustomerRow {

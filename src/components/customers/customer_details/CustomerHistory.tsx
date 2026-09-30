@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import type { CustomerData } from "../../api/customers/types/customers";
-import Table from "../../ui/Table";
-import type { CustomerOrderHistoryRow } from "./customer.types";
-import { CUSTOMER_ORDER_HISTORY } from "./CustomerColumn";
+import type { CustomerData } from "../../../api/customers/types/customers";
+import Table from "../../../ui/Table";
+import type { CustomerOrderHistoryRow } from "../customer.types";
+import { CUSTOMER_ORDER_HISTORY } from "../CustomerColumn";
 
 
 interface Props {

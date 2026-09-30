@@ -45,6 +45,25 @@ export interface ExpenseRow {
     amount: string | number;
 }
 
+const getPreviousMonth = (period: string) => {
+
+    const date = new Date();
+
+    if (period === "CURRENT_MONTH") {
+        date.setMonth(date.getMonth() - 1);
+    } else {
+        date.setMonth(date.getMonth() - 2);
+    }
+
+    const previousMonth = date.toLocaleString("en-US", {
+        month: "short",
+    });
+
+    return previousMonth;
+
+}
+// console.log(previousMonth); // "Sep"
+
 export const getDashboardStats = (summary: DashboardMetrics) => [
     {
         type: "order",
@@ -73,8 +92,21 @@ export const getDashboardStats = (summary: DashboardMetrics) => [
         iconPath: "/src/assets/CashierIcon.svg",
         amount: `${formatCurrency(Number(summary.financials.grossOrderValue))}`,
         desc: "Booked Sales Pipeline",
-        trendIconPath: "/src/assets/TrendIcon.svg",
-        status: `+${summary.comparisons.grossOrderValue.percentageChange}%`
+        trendIconPath: `${
+            summary.comparisons.grossOrderValue.direction === "INCREASE"
+                ? "/src/assets/TrendIcon.svg"
+                : summary.comparisons.grossOrderValue.direction === "DECREASE"
+                ? "/src/assets/DownTrendIcon.svg"
+                : "/src/assets/NoTrendIcon.svg"
+        }`,
+        status: `${summary.comparisons.grossOrderValue.percentageChange}% vs ${getPreviousMonth(summary.period.type)}`,
+        color: `${
+            summary.comparisons.grossOrderValue.direction === "INCREASE"
+                ? "text-bf-success"
+                : summary.comparisons.grossOrderValue.direction === "DECREASE"
+                ? "text-bf-error"
+                : "text-bf-primary"
+        }`,
     },
     {
         type: "payment",
@@ -84,7 +116,13 @@ export const getDashboardStats = (summary: DashboardMetrics) => [
         desc: "Actual Inflow Collected",
         statusDesc: "Settlement Rate",
         status: `${summary.comparisons.paymentReceived.percentageChange}%`,
-        color: "green",
+        color: `${
+            summary.comparisons.paymentReceived.direction === "INCREASE"
+                ? "text-bf-primaryblack bg-bf-live px-2 py-0.5 rounded-xl"
+                : summary.comparisons.paymentReceived.direction === "DECREASE"
+                ? "text-bf-error bg-[#FFDAD6] px-2 py-0.5 rounded-xl"
+                : "text-bf-primary bg-[#FFDBCC] px-2 py-0.5 rounded-xl"
+        }`,
     },
     {
         type: "balance",
@@ -138,7 +176,7 @@ export const getFinancialStats = (summary: DashboardMetrics) => [
 export const RECENT_ORDERS_TITLE = {
     icon: "/src/assets/ShoppingBagIcon.svg",
     title: "Recent Orders",
-    desc: "5 latest",
+    desc: "Latest Orders",
     button: "View Orders",
     path: "/orders"
 }

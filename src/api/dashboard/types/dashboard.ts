@@ -51,7 +51,7 @@ export interface FinancialMetrics {
 
 export interface Comparison {
     comparisonAvailable: boolean;
-    direction: "INCREASE" | "DECREASE";
+    direction: "INCREASE" | "DECREASE" | "NO_CHANGE";
     percentageChange: number;
 }
 

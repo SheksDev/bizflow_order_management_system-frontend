@@ -1,5 +1,5 @@
 import api from "../axios"
-import type { OrderResponse, OrdersQuery } from "./types/orders";
+import type { OrderResponse, OrdersQuery, OrdersResponse } from "./types/orders";
 
 
 
@@ -20,6 +20,15 @@ export const GetOrders = async (
     };
 
     const response = await api.get("/orders/all", { params });
+
+    return response.data as OrdersResponse;
+}
+
+export const GetOrder = async (
+    orderNumber: string,
+) => {
+
+    const response = await api.get(`/customers/${orderNumber}`);
 
     return response.data as OrderResponse;
 }

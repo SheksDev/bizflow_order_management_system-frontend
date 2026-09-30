@@ -1,7 +1,18 @@
-import type { TableColumn } from "../components/customers/customer.types";
 import type { EmptyTableProps } from "./EmptyTable";
 import EmptyTable from "./EmptyTable";
 // import { useNavigate } from "react-router-dom";
+
+
+
+export interface TableRow {
+    [key: string]: string | number;
+}
+
+export interface TableColumn<T extends object> {
+    key: keyof T;
+    label: string;
+    render?: (row: T) => React.ReactNode;
+}
 
 
 interface TableProps<T extends object> {
@@ -67,7 +78,7 @@ function Table<T extends object>(
                 bodyOptions?.length !== 0 ? (
 
                     <div
-                        className="w-full overflow-hidden border-bf-border rounded-lg">
+                        className="w-full overflow-hidden border-bf-border rounded-lg bf-shadow">
 
                         <div
                             className="max-h-75 overflow-auto no-scrollbar">

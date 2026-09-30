@@ -23,7 +23,7 @@ export const SIDEBAR_MENU_ITEMS = [
         title:  "Orders",
         path: "/orders",
         iconPath: "/src/assets/OrderIcon.svg",
-        iconActivePath: "/src/assets/OrderdWhiteIcon.svg",
+        iconActivePath: "/src/assets/OrderWhiteIcon.svg",
     },
     {
         name: "payments",

@@ -3,7 +3,7 @@
 function TopBar() {
     return (
         <div
-            className="w-full h-16 p-6 flex items-center gap-2 bg-[#FFF8F5] shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+            className="w-full h-16 p-6 flex items-center gap-2 bg-[#FFF8F5] shadow-[0_5px_8px_-4px_rgba(0,0,0,0.20)] relative z-10">
 
             <div>
 
@@ -27,7 +27,7 @@ function TopBar() {
 
             <h3
                 className="font-semibold text-[16px]/[24px] text-bf-primaryblack">
-                Design System & Component Foundation
+                Operations System
             </h3>
 
         </div>

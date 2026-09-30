@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { Skeleton, TableSkeleton } from "../../ui/Skeleton";
-import CustomerDetail from "./CustomerDetail"
-import CustomerOrderSummary from "./CustomerSummary";
-import type { CreateCustomerPayload, CustomerData } from "../../api/customers/types/customers";
-import { GetCustomer } from "../../api/customers/customer";
+import { Skeleton, TableSkeleton } from "../../../ui/Skeleton";
+import type { CreateCustomerPayload, CustomerData } from "../../../api/customers/types/customers";
+import { GetCustomer } from "../../../api/customers/customer";
 import axios from "axios";
-import CustomerInfo from "./CustomerInfo";
 import CustomerHistory from "./CustomerHistory";
 import { useParams, useNavigate } from "react-router-dom";
-import AddCustomerModal from "./AddCustomerModal";
-import CustomerCreationToast from "./CustomerCreationToast";
+import AddCustomerModal from "../AddCustomerModal";
+import CustomerCreationToast from "../CustomerCreationToast";
+import CustomerDetail from "./CustomerDetail";
+import CustomerOrderSummary from "./CustomerSummary";
+import CustomerInfo from "./CustomerInfo";
 
 
 function CustomerDetailView() {
@@ -87,7 +87,7 @@ function CustomerDetailView() {
 
     return (
         <div
-            className="absolute z-10 p-6 min-h-screen w-full min-w-0 flex flex-col items-start gap-6 no-scrollbar bg-bf-background">
+            className="relative p-6 min-h-screen w-full min-w-0 flex flex-col items-start gap-6 no-scrollbar bg-bf-background">
 
             <CustomerCreationToast 
                 customerInfo={toastInfo}

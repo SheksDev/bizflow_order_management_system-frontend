@@ -1,7 +1,8 @@
+import type { TableColumn } from "../../ui/Table";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { formatDateTime } from "../../utils/formatDateTime";
 import { getInitials } from "../../utils/getIntitals";
-import type { CustomerOrderHistoryRow, CustomerRow, TableColumn } from "./customer.types";
+import type { CustomerOrderHistoryRow, CustomerRow } from "./customer.types";
 
 
 
@@ -12,7 +13,7 @@ export const CUSTOMER_COLUMNS: TableColumn<CustomerRow>[] = [
         render: (row) => (
 
             <div
-                className="flex items-center justify-center gap-2.5">
+                className="flex items-center gap-2.5">
 
                 <div
                     className="w-8 h-8 flex items-center justify-center rounded-full bg-[#FFDBCC]">

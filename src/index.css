@@ -23,7 +23,7 @@ body {
   --color-bf-primarytextlight: #897267;
   --color-bf-primaryblack: #111827;
   --color-bf-live: #89F5E7;
-  --color-bf-error: #DC2626;
+  --color-bf-error: #BA1A1A;
   --color-bf-success: #00625A;
   --font-libertinus-mono: "Libertinus Mono", monospace;
 }
@@ -51,7 +51,7 @@ body {
   }
 
   .bf-shadow {
-    @apply  shadow-[0_1px_2px_rgba(0,0,0,0.05)]
+    @apply  shadow-[0_1px_2px_1px_rgba(0,0,0,0.05)]
   }
 }
 
