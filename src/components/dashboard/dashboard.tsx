@@ -1,6 +1,7 @@
 import type React from "react";
 import type { DashboardMetrics } from "../../api/dashboard/types/dashboard";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { formatDateTime } from "../../utils/formatDateTime";
 
 
 export interface TableRow {
@@ -162,7 +163,7 @@ export const getFinancialStats = (summary: DashboardMetrics) => [
         type: "outflow",
         title: "Outflows",
         amount: `- ${formatCurrency(Number(summary.financials.outflow.total))}`,
-        desc: [`Expenses: +${formatCurrency(Number(summary.financials.outflow.expenses))}`, `Refunds: +${formatCurrency(Number(summary.financials.outflow.refunds))}`],
+        desc: [`Expenses: -${formatCurrency(Number(summary.financials.outflow.expenses))}`, `Refunds: -${formatCurrency(Number(summary.financials.outflow.refunds))}`],
     },
     {
         type: "net-cash",
@@ -230,7 +231,7 @@ export const RECENT_ORDERS_COLUMNS: TableColumn<OrderRow>[] = [
 
                 <p
                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
-                    {row.delivery.deliveryDate}
+                    {`${formatDateTime(row.delivery.deliveryDate).date}, ${formatDateTime(row.delivery.deliveryDate).time}`}
                 </p>
 
                 <p
@@ -270,7 +271,7 @@ export const RECENT_ORDERS_COLUMNS: TableColumn<OrderRow>[] = [
                         ? "text-bf-primarytext"
                         : "text-bf-primarytextlight"
                     }`}>
-                    {`${row.balance === 0 ? "Settled" : `${row.balance} Due`}`}
+                    {`${row.balance === 0 ? "Settled" : `${formatCurrency(Number(row.balance))} Due`}`}
                 </p>
 
             </div>
@@ -374,7 +375,7 @@ export const RECENT_PAYMENTS_COLUMNS: TableColumn<PaymentRow>[] = [
 
             <p
                 className="font-semibold text-[11px]/[14px] tracking-[0.22px] text-bf-primaryblack">
-                {row.date}
+                {formatDateTime(row.date).date}
             </p>
         )
     },
@@ -424,7 +425,7 @@ export const RECENT_EXPENSES_COLUMNS: TableColumn<ExpenseRow>[] = [
 
             <p
                 className="font-normal text-[13px]/[18px] text-bf-primarytext">
-                {row.date}
+                {formatDateTime(row.date).date}
             </p>
         )
     },

@@ -2,16 +2,17 @@ import React, { useState, type Dispatch, type SetStateAction } from "react";
 import type  { CreateCustomerPayload } from "../../api/customers/types/customers";
 import { AddCustomer, EditCustomer } from "../../api/customers/customer";
 import type { Info } from "./CustomerCreationToast";
+import { useLocation, useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 interface Props {
-    setOpenModal: Dispatch<SetStateAction<boolean>>;
-    setLoading: Dispatch<SetStateAction<boolean>>;
-    newCustomer: Dispatch<SetStateAction<Info>>;
-    loading: boolean;
+    setOpenModal?: Dispatch<SetStateAction<boolean>>;
+    setLoading?: Dispatch<SetStateAction<boolean>>;
+    newCustomer?: Dispatch<SetStateAction<Info>>;
+    loading?: boolean;
     refetchCustomers?: () => void;
     refetchCustomer?: () => void;
-    toast: Dispatch<SetStateAction<boolean>>;
+    toast?: Dispatch<SetStateAction<boolean>>;
     editValues?: CreateCustomerPayload | null;
     customerId?: string;
 }
@@ -29,6 +30,9 @@ function AddCustomerModal(
         customerId,
     } : Props
 ) {
+
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const [formData, setFormData] = useState<CreateCustomerPayload>({
         name: editValues?.name ?? "",
@@ -50,7 +54,7 @@ function AddCustomerModal(
 
         try {
 
-            setLoading(true);
+            setLoading?.(true);
 
             if (!editValues) {
 
@@ -62,9 +66,9 @@ function AddCustomerModal(
 
                 refetchCustomers?.();
 
-                setOpenModal(false);
+                setOpenModal?.(false);
 
-                newCustomer(() => ({
+                newCustomer?.(() => ({
                     name: response.data.name,
                     id: response.data.customerId,
                 }))
@@ -79,16 +83,16 @@ function AddCustomerModal(
 
                 refetchCustomer?.();
 
-                setOpenModal(false);
+                setOpenModal?.(false);
 
-                newCustomer(() => ({
+                newCustomer?.(() => ({
                     name: response.data.name,
                     id: response.data.customerId,
                 }))
 
             }
 
-            toast(true);
+            toast?.(true);
 
         } catch (err: unknown) {
 
@@ -96,7 +100,7 @@ function AddCustomerModal(
 
         } finally {
 
-            setLoading(false);
+            setLoading?.(false);
         }
     }
 
@@ -128,7 +132,14 @@ function AddCustomerModal(
                     <img 
                         src="/src/assets/CancelIcon.svg" 
                         alt="" 
-                        onClick={() => setOpenModal(false)}
+                        onClick={() => {
+
+                            if (location.pathname.includes("/customers/create")) {
+                                navigate("/customers")
+                            } else {
+                                setOpenModal?.(false)
+                            }
+                        }}
                         className="cursor-pointer"
                     />
 
@@ -209,7 +220,7 @@ function AddCustomerModal(
                                 </label>
 
                                 <div
-                                    className="w-full px-4 py-2.25 rounded-md bg-[#FAF2EE] bf-shadow text-bf-primarytextlight font-normal text-[14px]">
+                                    className="w-full px-4 py-2.25 rounded-md bg-bf-backgroundTwo bf-shadow text-bf-primarytextlight font-normal text-[14px]">
 
                                     <input 
                                         name="phone"
@@ -240,7 +251,7 @@ function AddCustomerModal(
                                 </label>
 
                                 <div
-                                    className="w-full px-4 py-2.25 rounded-md bg-[#FAF2EE] bf-shadow text-bf-primarytextlight font-normal text-[14px]">
+                                    className="w-full px-4 py-2.25 rounded-md bg-bf-backgroundTwo bf-shadow text-bf-primarytextlight font-normal text-[14px]">
 
                                     <input 
                                         name="email"
@@ -276,7 +287,7 @@ function AddCustomerModal(
                             </label>
 
                             <div
-                                className="w-full h-18 px-4 py-4 rounded-md bg-[#FAF2EE] bf-shadow text-bf-primarytextlight font-normal text-[14px]">
+                                className="w-full h-18 px-4 py-4 rounded-md bg-bf-backgroundTwo bf-shadow text-bf-primarytextlight font-normal text-[14px]">
 
                                 <textarea  
                                     name="address"
@@ -305,7 +316,7 @@ function AddCustomerModal(
                             </label>
 
                             <div
-                                className="w-full h-23 px-4 py-4 rounded-md bg-[#FAF2EE] bf-shadow text-bf-primarytextlight font-normal text-[14px]">
+                                className="w-full h-23 px-4 py-4 rounded-md bg-bf-backgroundTwo bf-shadow text-bf-primarytextlight font-normal text-[14px]">
 
                                 <textarea  
                                     name="notes"
@@ -334,7 +345,14 @@ function AddCustomerModal(
 
                         <button
                             type="button"
-                            onClick={() => setOpenModal(false)}
+                            onClick={() => {
+                                
+                                if (location.pathname.includes("/customers/create")) {
+                                    navigate("/customers")
+                                } else {
+                                    setOpenModal?.(false)
+                                }
+                            }}
                             className="px-6 py-2 rounded-md text-bf-primarytext font-semibold text-[14px]/[20px] text-center cursor-pointer">
                             Cancel
                         </button>

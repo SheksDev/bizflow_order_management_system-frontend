@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import type { CustomerData } from "../../../api/customers/types/customers";
 import { formatDateTime } from "../../../utils/formatDateTime";
 import { getInitials } from "../../../utils/getIntitals";
@@ -15,6 +16,8 @@ function CustomerDetail(
         editCustomer,
     } : DetailProps
 ) {
+
+    const navigate = useNavigate();
 
     return (
         <div
@@ -80,7 +83,7 @@ function CustomerDetail(
 
                 <button
                     onClick={editCustomer}
-                    className="shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 bg-[#FAF2EE] bf-shadow font-semibold text-[14px]/[20px] text-bf-primaryblack rounded-md cursor-pointer">
+                    className="shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 bg-bf-backgroundTwo bf-shadow font-semibold text-[14px]/[20px] text-bf-primaryblack rounded-md cursor-pointer">
 
                     <img 
                         src="/src/assets/EditIcon.svg" 
@@ -95,6 +98,11 @@ function CustomerDetail(
                 
 
                 <button
+                    onClick={(e) => {
+
+                        e.preventDefault();
+                        navigate("/orders/create");
+                    }}
                     className="shrink-0 flex items-center justify-center gap-1.5 px-4 py-2 bg-bf-primary bf-shadow font-semibold text-[14px]/[20px] text-white rounded-md cursor-pointer">
 
                     <img 

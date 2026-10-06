@@ -93,6 +93,27 @@ export const ORDER_COLUMNS: TableColumn<OrderData>[] = [
         )
     },
     {
+        key: "recipientName",
+        label: "RECIPIENT",
+        render: (row) => (
+
+            <div
+                className="flex flex-col items-start">
+
+                <p
+                    className="font-semibold text-[14px]/[20px] text-bf-primaryblack">
+                    {row.recipientName ?? "-"}
+                </p>
+
+                <p
+                    className="font-normal text-[13px]/[18px] text-bf-primarytextlight">
+                    {row.recipientPhone ?? "-"}
+                </p>
+
+            </div>
+        )
+    },
+    {
         key: "items",
         label: "ORDER ITEMS",
         render: (row) => (

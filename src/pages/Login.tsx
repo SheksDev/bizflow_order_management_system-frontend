@@ -33,7 +33,7 @@ function Login() {
 
             const res = await LoginUser(data);
 
-            console.log(res);
+            // console.log(res);
 
             localStorage.setItem("token", res.data?.accessToken);
 

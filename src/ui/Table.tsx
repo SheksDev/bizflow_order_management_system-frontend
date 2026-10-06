@@ -40,6 +40,7 @@ function Table<T extends object>(
             heading: "No recent customers found",
             message: "There are no customers recorded.",
             action: "Add New Customer",
+            path: "/customers/create",
         },
 
         orders: {
@@ -48,6 +49,7 @@ function Table<T extends object>(
             heading: "No recent orders found",
             message: "There are no orders recorded.",
             action: "Record New Order",
+            path: "/orders/create",
         },
 
         payments: {
@@ -56,6 +58,7 @@ function Table<T extends object>(
             heading: "No recent payments recorded",
             message: "There are no incoming transactions.",
             action: "Receive Payment",
+            path: "/payments/create",
         },
 
         expenses: {
@@ -65,6 +68,7 @@ function Table<T extends object>(
             message:
             "Operational hub has recorded zero disbursements or supply outlays.",
             action: "Record New Expense",
+            path: "/expenses/create",
         },
     };
 
@@ -87,7 +91,7 @@ function Table<T extends object>(
                                 className={`w-max min-w-full border-collapse`}>
 
                                 <thead
-                                    className="bg-[#FAF2EE] sticky top-0 z-10">
+                                    className="bg-bf-backgroundTwo sticky top-0 z-10">
                                     
                                     <tr>
 
@@ -96,7 +100,7 @@ function Table<T extends object>(
 
                                                 <th
                                                     key={String(column.key)}
-                                                    className="whitespace-nowrap px-4 py-4.5 text-left font-bold text-[11px]/[14px] tracking-[0.55px] text-bf-primarytext">
+                                                    className={`whitespace-nowrap px-4 py-4.5 font-bold text-[11px]/[14px] tracking-[0.55px] text-bf-primarytext text-left`}>
                                                     {column.label}
                                                 </th>
                                             ))

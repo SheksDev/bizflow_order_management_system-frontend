@@ -1,5 +1,5 @@
 import api from "../axios"
-import type { OrderResponse, OrdersQuery, OrdersResponse } from "./types/orders";
+import type { createOrderPayload, OrderResponse, OrdersQuery, OrdersResponse, ProductsResponse } from "./types/orders";
 
 
 
@@ -28,7 +28,23 @@ export const GetOrder = async (
     orderNumber: string,
 ) => {
 
-    const response = await api.get(`/customers/${orderNumber}`);
+    const response = await api.get(`/orders/${orderNumber}`);
+
+    return response.data as OrderResponse;
+}
+
+export const GetProducts = async () => {
+
+    const response = await api.get("/products/all");
+
+    return response.data as ProductsResponse;
+}
+
+export const CreateOrder = async (
+    payload: createOrderPayload
+) => {
+
+    const response = await api.post("/orders/create", payload);
 
     return response.data as OrderResponse;
 }

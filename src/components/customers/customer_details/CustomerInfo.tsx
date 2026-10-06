@@ -1,4 +1,5 @@
-import type { CustomerData } from "../../api/customers/types/customers";
+import type { CustomerData } from "../../../api/customers/types/customers";
+
 
 
 interface Props {
@@ -32,18 +33,13 @@ function CustomerInfo(
 
                 </div>
 
-                <span
-                    className="font-semibold text-[11px]/[14px] tracking-[0.22px] text-bf-primary cursor-pointer">
-                    Edit
-                </span>
-
             </div>
 
             <div
                 className="shrink-0 w-full flex flex-col items-center gap-2">
 
                 <div
-                    className="w-full flex flex-col gap-0.5 p-2 rounded-sm bg-[#FAF2EE]">
+                    className="w-full flex flex-col gap-0.5 p-2 rounded-sm bg-bf-backgroundTwo">
 
                     <p
                         className="font-semibold text-[11px]/[14px] tracking-[0.22px] text-bf-primarytextlight">
@@ -64,12 +60,14 @@ function CustomerInfo(
                             <img 
                                 src="/src/assets/ClipboardIcon.svg" 
                                 alt="" 
+                                className="cursor-pointer"
                             />
                             
 
                             <img 
                                 src="/src/assets/PhoneIcon.svg" 
                                 alt="" 
+                                className="cursor-pointer"
                             />
 
                         </div>
@@ -79,7 +77,7 @@ function CustomerInfo(
                 </div>
 
                 <div
-                    className="w-full flex flex-col gap-0.5 p-2 rounded-sm bg-[#FAF2EE]">
+                    className="w-full flex flex-col gap-0.5 p-2 rounded-sm bg-bf-backgroundTwo">
 
                     <p
                         className="font-semibold text-[11px]/[14px] tracking-[0.22px] text-bf-primarytextlight">
@@ -99,6 +97,7 @@ function CustomerInfo(
                             <img 
                                 src="/src/assets/ClipboardIcon.svg" 
                                 alt="" 
+                                className="cursor-pointer"
                             />
 
                         </div>
@@ -108,7 +107,7 @@ function CustomerInfo(
                 </div>
 
                 <div
-                    className="w-full flex flex-col gap-1 p-2 rounded-sm bg-[#FAF2EE]">
+                    className="w-full flex flex-col gap-1 p-2 rounded-sm bg-bf-backgroundTwo">
 
                     <p
                         className="font-semibold text-[11px]/[14px] tracking-[0.22px] text-bf-primarytextlight">

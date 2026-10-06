@@ -38,7 +38,7 @@ function CustomerHistory(
                     return {
 
                         orderNumber: order.orderNumber ?? "",
-                        orderItem: items,
+                        orderItem: items ?? [],
                         delivery : {
                             deliveryDate: order.deliveryDate ?? "",
                             deliveryAddress: order.deliveryAddress ?? "",

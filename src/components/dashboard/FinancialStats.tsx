@@ -24,7 +24,7 @@ function FinancialStats(
 
                                 <div
                                     key={stat.type}
-                                    className='flex-1 min-w-24 px-2 pt-2 py-5.5 rounded-sm bg-[#FAF2EE] flex flex-col'>
+                                    className='flex-1 min-w-24 px-2 pt-2 py-5.5 rounded-sm bg-bf-backgroundTwo flex flex-col'>
 
                                     <p
                                         className={`font-medium text-[11px]/[14px] tracking-[0.22px] ${

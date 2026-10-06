@@ -9,7 +9,7 @@ function SideBar() {
     
     return (
         <div
-            className="h-screen shrink-0 transistion-all duration-300 w-[256px] p-6 bg-[#FAF2EE] flex flex-col justify-between items-start">
+            className="h-screen shrink-0 transistion-all duration-300 w-[256px] p-6 bg-bf-backgroundTwo flex flex-col justify-between items-start">
 
             <div
                 className="w-full">
@@ -48,7 +48,7 @@ function SideBar() {
 
                                 <div
                                     key={item.name}
-                                    className={`min-w-0 flex items-center gap-2 p-2 rounded-sm cursor-pointer ${location.pathname === item.path && "bg-bf-primary text-[#FFFFFF]"}`}
+                                    className={`min-w-0 flex items-center gap-2 p-2 rounded-sm cursor-pointer ${location.pathname.includes(item.path) && "bg-bf-primary text-[#FFFFFF]"}`}
 
                                     onClick={() => {
 
@@ -57,17 +57,17 @@ function SideBar() {
                                     }}>
 
                                     {
-                                        location.pathname !== item.path
+                                        location.pathname.includes(item.path)
                                             ? (
                                                 <img 
-                                                    src={item.iconPath} 
+                                                    src={item.iconActivePath} 
                                                     alt="" 
                                                     // className={`w-3.75 h-3.75}`}
                                                 />
                                             )
                                             : (
                                                 <img 
-                                                    src={item.iconActivePath} 
+                                                    src={item.iconPath} 
                                                     alt="" 
                                                     // className={`w-3.75 h-3.75}`}
                                                 />

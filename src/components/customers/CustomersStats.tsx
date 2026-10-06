@@ -32,9 +32,9 @@ function CustomerStats(
                                     key={index}
                                     className="flex-1 min-w-36 rounded-lg bg-white flex flex-col items-start gap-4 justify-between p-4 bf-shadow">
 
-                                    <Skeleton className="w-24 h-6 bg-[#FAF2EE]" />
+                                    <Skeleton className="w-24 h-6 bg-bf-backgroundTwo" />
                                     <Skeleton className="w-full h-8 bg-bf-primarytextlight/30" />
-                                    <Skeleton className="w-24 h-6 bg-[#FAF2EE]" />
+                                    <Skeleton className="w-24 h-6 bg-bf-backgroundTwo" />
                                     
                                 </div>
                             ))

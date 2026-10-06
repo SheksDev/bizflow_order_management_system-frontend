@@ -1,5 +1,5 @@
 import type { CustomerSummary } from "../../api/customers/types/customers";
-import type { OrderDetails } from "../../api/orders/types/orders";
+import type { OrderItemDetails } from "../../api/orders/types/orders";
 import { formatCurrency } from "../../utils/formatCurrency";
 
 export interface Summary {
@@ -77,7 +77,7 @@ export const CUSTOMER_STATS = (summary: Summary) => [
     {
         type: "balance",
         title: "OUTSTANDNG BALANCE",
-        volume: `${summary.totalOutstanding} Settled`,
+        volume: `${formatCurrency(Number(summary.totalOutstanding))} Settled`,
         stats: ["Action Due"]
     },
 ]
@@ -97,7 +97,7 @@ export interface CustomerRow {
 export interface OrderItem {
     orderName: string;
     // details: Record<string, string | string[]>;
-    details: OrderDetails;
+    details: OrderItemDetails;
 }
 
 
@@ -114,11 +114,7 @@ export interface CustomerOrderHistoryRow {
         balance: number;
     }
     status: "PENDING" | 
-            "CONFIRMED" | 
-            "IN_PROGRESS" | 
-            "READY" |  
-            "OUT_FOR_DELIVERY" | 
-            "DELIVERED" | 
+            "IN_PROGRESS" |  
             "COMPLETED" | 
             "CANCELLED";
 }

@@ -1,1 +1,1 @@
-export const formatCurrency = (value: number) => `₦${value.toLocaleString("en-NG")}`;
+export const formatCurrency = (value: number) => `₦${value.toLocaleString("en-NG")}.00`;

@@ -19,12 +19,13 @@ function LoginScreen(
   }: LoginProps
 ) {
 
-  // console.log("LoginScreen error:", error);
 
   const [loginData, setLoginData] = useState<LoginRequest>({
     email: "",
     password: "",
   });
+
+  const [viewPassword, setViewPassword] = useState<boolean>(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     
@@ -38,7 +39,7 @@ function LoginScreen(
 
   return (
     <div
-      className="w-full h-screen">
+      className="w-full h-screen bg-bf-background flex flex-col">
 
 
         {/********************* HEADER *******************/}
@@ -76,10 +77,10 @@ function LoginScreen(
       {/********************* LOGIN CARD *******************/}
 
       <main
-        className="w-full h-[calc(100vh-41px)] p-8 bg-bf-background flex justify-center items-center">
+        className="w-full h-full p-8 flex justify-center items-center">
 
         <div
-          className="w-110 min-h-[calc((100vh-88px)-65px)] flex flex-col justify-center gap-6 px-9 py-7 rounded-xl bg-[#FFFFFF] bf-border">
+          className="w-110 min-h-0 flex flex-col justify-center gap-6 px-9 py-7 rounded-xl bg-[#FFFFFF] bf-border">
 
           <div
             className="flex flex-col items-center justify-center">
@@ -196,7 +197,7 @@ function LoginScreen(
                   className={`w-full px-3.5 py-2 rounded-lg bg-[#FFFFFF] ${!fieldErrors.password ? "bf-border" : "bf-error-border"} flex items-center gap-2`}>
 
                   <input 
-                    type="password" 
+                    type={viewPassword ? "text" : "password"} 
                     name="password"
                     value={loginData.password}
                     onChange={(e) => handleInputChange(e)}
@@ -204,7 +205,8 @@ function LoginScreen(
                   />
 
                   <div
-                    className="cursor-pointer">
+                    onClick={() => setViewPassword((prev) => !prev)}
+                    className="cursor-pointer p-2 flex items-center justify-center">
 
                     <img 
                       src="/src/assets/Eye-Icon-Show.svg" 
@@ -226,7 +228,7 @@ function LoginScreen(
               <button
                 type="submit"
                 disabled={!loginData.email || !loginData.password || loading}
-                className={`w-full flex items-center justify-center px-3.5 py-2.5 rounded-lg bg-bf-primary text-[#FFFFFF] font-medium text-[14px]/[20px] cursor-pointer disabled:bg-[#F7EFEB] disabled:text-[#B0AAA7]`}>
+                className={`w-full flex items-center justify-center px-3.5 py-2.5 rounded-lg bg-bf-primary text-[#FFFFFF] font-medium text-[14px]/[20px] cursor-pointer disabled:bg-[#F7EFEB] disabled:text-[#B0AAA7] disabled:cursor-not-allowed`}>
                 
                 <p>
                   {

@@ -23,6 +23,7 @@ function DashboardTable<T extends object>({
             heading: "No recent orders found",
             message: "There are no orders recorded for this reporting period.",
             action: "Record New Order",
+            path: "/orders/create"
         },
 
         payments: {
@@ -31,6 +32,7 @@ function DashboardTable<T extends object>({
             heading: "No recent payments recorded",
             message: "There are no incoming transactions for this reporting period.",
             action: "Receive Payment",
+            path: "/payments/create"
         },
 
         expenses: {
@@ -40,6 +42,7 @@ function DashboardTable<T extends object>({
             message:
             "Operational hub has recorded zero disbursements or supply outlays this period.",
             action: "Record New Expense",
+            path: "/expenses/create"
         },
     };
 
@@ -108,7 +111,7 @@ function DashboardTable<T extends object>({
                                     className={`w-full min-w-0 table-fixed border-collapse`}>
 
                                     <thead
-                                        className="bg-[#FAF2EE] sticky top-0 z-10">
+                                        className="bg-bf-backgroundTwo sticky top-0 z-10">
                                         
                                         <tr>
 

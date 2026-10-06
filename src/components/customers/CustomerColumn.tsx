@@ -2,6 +2,7 @@ import type { TableColumn } from "../../ui/Table";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { formatDateTime } from "../../utils/formatDateTime";
 import { getInitials } from "../../utils/getIntitals";
+import { getDetailValue } from "../orders/order_modal/utils";
 import type { CustomerOrderHistoryRow, CustomerRow } from "./customer.types";
 
 
@@ -100,7 +101,7 @@ export const CUSTOMER_COLUMNS: TableColumn<CustomerRow>[] = [
                         ? "text-bf-primarytext"
                         : "text-bf-primarytextlight"
                     }`}>
-                    {`${row.balance === 0 ? "Settled" : `${row.balance} Due`}`}
+                    {`${row.balance === 0 ? "Settled" : `${formatCurrency(row.balance)} Due`}`}
                 </p>
 
             </div>
@@ -113,7 +114,7 @@ export const CUSTOMER_COLUMNS: TableColumn<CustomerRow>[] = [
 
             <p
                 className="font-normal text-[13px]/[18px] text-bf-primarytextlight">
-                {row.dateAdded ?? "-"}
+                {formatDateTime(row.dateAdded ?? "").date}
             </p>
         )
     },
@@ -164,38 +165,48 @@ export const CUSTOMER_ORDER_HISTORY: TableColumn<CustomerOrderHistoryRow>[] = [
                             <div
                                 className="flex flex-col items-start">
 
+                                {/* <p
+                                    className="font-normal text-[13px]/[18px] text-bf-primarytext">
+                                    {`Shape: ${item.details.shape}`}
+                                </p> */}
                                 <p
                                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
-                                    {`Size: ${item.details.size}`}
+                                    {`Size: ${getDetailValue(item.details, "size")}`}
                                 </p>
                                 <p
                                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
-                                    {`Layer: ${item.details.layer}`}
+                                    {`Layer: ${getDetailValue(item.details, "layer")}`}
                                 </p>
                                 <p
                                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
                                     {`Flavour: ${
-                                        item.details.flavour?.join(", ") ?? "No flavour specified"
+                                        getDetailValue(item.details, "flavour") ?? "No flavour specified"
                                     }`}
                                 </p>
                                 <p
                                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
-                                    {`Frosting: ${item.details.frosting}`}
+                                    {`Frosting: ${getDetailValue(item.details, "frosting")}`}
                                 </p>
                                 <p
                                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
                                     {`Topping: ${
-                                        item.details.topping?.join(", ") ?? "No topping specified"
+                                        getDetailValue(item.details, "topping") ?? "No topping specified"
                                     }`}
                                 </p>
                                 <p
                                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
-                                    {`Inscription: ${item.details.inscription}`}
+                                    {`Toppers: ${
+                                        getDetailValue(item.details, "toppers") ?? "No topper specified"
+                                    }`}
+                                </p>
+                                <p
+                                    className="font-normal text-[13px]/[18px] text-bf-primarytext">
+                                    {`Inscription: ${getDetailValue(item.details, "inscription")}`}
                                 </p>
                                 <p
                                     className="font-normal text-[13px]/[18px] text-bf-primarytext">
                                     {`Extra: ${
-                                        item.details.extra?.join(", ") ?? "No extra"
+                                        getDetailValue(item.details, "extra") ?? "No extra"
                                     }`}
                                 </p>
 

@@ -2,12 +2,15 @@
 
 // import type { EmptyTableProps } from "./DashboardTable";
 
+import { useNavigate } from "react-router-dom";
+
 export interface EmptyTableProps {
     type: string;
     icon?: string;
     heading: string;
     message: string;
     action: string;
+    path: string;
 }
 
 interface Props {
@@ -19,6 +22,8 @@ function EmptyTable(
         emptyTable
     } : Props
 ) {
+
+    const navigate = useNavigate();
 
     return (
         <div
@@ -50,6 +55,12 @@ function EmptyTable(
             </div>
 
             <button
+                onClick={(e) => {
+
+                    e.preventDefault();
+
+                    navigate(emptyTable?.path ?? "");
+                }}
                 className={`rounded-lg px-4 py-2 text-[#FFFFFF] font-bold text-[12px]/[22px] cursor-pointer ${
                     emptyTable?.type === "orders" || emptyTable?.type === "customers"
                         ? "bg-bf-primary"

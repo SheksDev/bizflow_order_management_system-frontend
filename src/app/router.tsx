@@ -8,7 +8,10 @@ import Customers from "../pages/Customers";
 import CustomerDetailView from "../components/customers/customer_details/CustomerDetailView";
 import Orders from "../pages/Orders";
 import OrderDetailView from "../components/orders/order_details/OrderDetailView";
+import AddOrderModal from "../components/orders/AddOrderModal";
+import AddCustomerModal from "../components/customers/AddCustomerModal";
 // import AddCustomerModal from "../components/customers/AddCustomerModal";
+
 
 
 export const router = createBrowserRouter([
@@ -36,6 +39,12 @@ export const router = createBrowserRouter([
                     {
                         path: "customers",
                         element: <Customers />,
+                        children: [
+                            {
+                                path: "create",
+                                element: <AddCustomerModal />
+                            }
+                        ]
                     },
                     {
                         path: "customers/:customerId",
@@ -44,6 +53,12 @@ export const router = createBrowserRouter([
                     {
                         path: "orders",
                         element: <Orders />,
+                        children: [
+                            {
+                                path: "create",
+                                element: <AddOrderModal />
+                            },
+                        ]
                     },
                     {
                         path: "orders/:orderNumber",
